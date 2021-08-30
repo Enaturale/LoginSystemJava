@@ -91,6 +91,7 @@ public class LoginPage implements ActionListener{
                        JOptionPane.showMessageDialog(null, "Login Successful");
                        messageLabel.setText("Login is successful");
                        messageLabel.setForeground(Color.GREEN);
+                       frame.dispose();
                        WelcomePage welcomePage = new WelcomePage();
                 }
                 else{ //if the user id is not equal to the password used
