@@ -7,7 +7,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,7 +23,7 @@ public class LoginPage implements ActionListener{
     JPasswordField userPassword = new JPasswordField();
     JLabel idLabel= new JLabel("ID: ");
     JLabel passLabel= new JLabel("Password: ");
-    JLabel messageLabel = new JLabel("");
+    JLabel messageLabel = new JLabel("", Label.LEFT);
 
  
 
@@ -84,12 +86,27 @@ public class LoginPage implements ActionListener{
             String password = String.valueOf(userPassword.getPassword());
 
             //next, we will verify the information usin hashmap
-            if(logininfo.containsKey(userId)){
+            if(logininfo.containsKey(userId)){ //if the user id was found
                 if(logininfo.get(userId).equals(password)){ //if the fetched user id is the same with the associated password
                        JOptionPane.showMessageDialog(null, "Login Successful");
                        messageLabel.setText("Login is successful");
+                       messageLabel.setForeground(Color.GREEN);
                        WelcomePage welcomePage = new WelcomePage();
                 }
+                else{ //if the user id is not equal to the password used
+                    JOptionPane.showMessageDialog(null, "We can see you like making mistakes. Login not successful");
+                    messageLabel.setText("Wrong Password, Please.");
+                    messageLabel.setForeground(Color.RED);
+                    userID.setText("");
+                    userPassword.setText("");                   
+
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "User Name not Found");
+                messageLabel.setText("No No. Wrong ID!");
+                messageLabel.setForeground(Color.RED);                
+
             }
         }
         
