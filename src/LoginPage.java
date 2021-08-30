@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -38,13 +39,16 @@ public class LoginPage implements ActionListener{
 
         login.setBounds(125, 200, 100, 25);
         login.addActionListener(this);
+        login.setFocusable(false);
 
         reset.setBounds(225, 200, 100, 25);
         reset.addActionListener(this);
+        reset.setFocusable(false);
+
 
 
         messageLabel.setBounds(125, 250, 250, 35);
-        messageLabel.setFont(new  Font(null, Font.BOLD, 30));
+        messageLabel.setFont(new  Font(null, Font.BOLD, 20));
 
         frame.add(idLabel);
         frame.add(passLabel);
@@ -67,6 +71,27 @@ public class LoginPage implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
+
+        //what happens to the resert button. The code is to clear the fields
+        if(e.getSource() == reset){
+            userID.setText("");
+            userPassword.setText("");
+        }
+
+        if(e.getSource()== login){
+            //first, we will retrive the user id and password
+            String userId = userID.getText();
+            String password = String.valueOf(userPassword.getPassword());
+
+            //next, we will verify the information usin hashmap
+            if(logininfo.containsKey(userId)){
+                if(logininfo.get(userId).equals(password)){ //if the fetched user id is the same with the associated password
+                       JOptionPane.showMessageDialog(null, "Login Successful");
+                       messageLabel.setText("Login is successful");
+                       WelcomePage welcomePage = new WelcomePage();
+                }
+            }
+        }
         
     }
     
