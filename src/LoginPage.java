@@ -31,9 +31,20 @@ public class LoginPage implements ActionListener{
 
         logininfo = logininfoOriginal;
 
+        idLabel.setBounds(50, 100, 75, 25);
+        passLabel.setBounds(50, 150, 75, 25);
+
+        frame.add(idLabel);
+        frame.add(passLabel);
+
+
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("Login Page");
         frame.setSize(400, 400);
-        
+        frame.setLayout(null);
+        frame.setVisible(true);
+
 
     }
 
