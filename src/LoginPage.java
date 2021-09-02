@@ -92,7 +92,7 @@ public class LoginPage implements ActionListener{
                        messageLabel.setText("Login is successful");
                        messageLabel.setForeground(Color.GREEN);
                        frame.dispose();
-                       WelcomePage welcomePage = new WelcomePage();
+                       WelcomePage welcomePage = new WelcomePage(userId);
                 }
                 else{ //if the user id is not equal to the password used
                     JOptionPane.showMessageDialog(null, "We can see you like making mistakes. Login not successful");
